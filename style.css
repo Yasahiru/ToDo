@@ -1,0 +1,147 @@
+ul li i {
+  margin-left: 15px;
+  font-size: 20px;
+}
+ul li .under {
+  display: none;
+}
+ul li label {
+  margin-left: 200px;
+  font-size: 28px;
+  font-weight: bold;
+}
+ul li:hover .under {
+  display: inline;
+}
+
+i:hover {
+  cursor: pointer;
+}
+
+.disgard, .nondisplay {
+  display: none;
+}
+
+.display {
+  display: inline;
+}
+
+header {
+  margin-top: 13px;
+  margin-bottom: 40px;
+  padding-right: 80px;
+}
+header ol {
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+}
+header ol li {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 500;
+}
+header ol li h1 {
+  font-weight: bold;
+}
+header ol li i {
+  font-size: 20px;
+}
+
+.trans {
+  background-color: transparent;
+  border: 0;
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.place {
+  margin-left: 5px;
+}
+
+.footer {
+  margin-top: 420px;
+  padding: 32px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.footer h1 {
+  margin-top: 12px;
+  display: inline;
+}
+.footer span {
+  margin-top: 100px;
+  margin-left: 850px;
+}
+.footer span i {
+  margin: 10px;
+}
+.footer sub {
+  font-weight: bold;
+}
+
+#content {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+#content .tl {
+  margin-top: 48px;
+  height: 300px;
+  width: 90%;
+  position: fixed;
+}
+#content .tl ul li .is {
+  display: inline;
+}
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(33, 37, 41);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+.show-content #content {
+  opacity: 1;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: #ddd;
+}
+
+/*# sourceMappingURL=style.css.map */
