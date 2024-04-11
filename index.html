@@ -4,70 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.2.0/uicons-brands/css/uicons-brands.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.2.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.2.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.2.0/uicons-solid-straight/css/uicons-solid-straight.css'>
-    <title>Document</title>
-    <style id="styletag">
-        ::-webkit-scrollbar-thumb {
-            background: #3498db;   
-            border-radius: 6px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-          background: #0f78bd; 
+    <title>Js Quiz</title>
+    <style>
+        input{
+            background-color:transparent;
+            border:none;
+            color:#fff;
         }
     </style>
-    <script>  
-        //////////////// ANIMATION ////////////////
-        setTimeout(function() {
-            document.getElementById('preloader').style.opacity = '0';
-            setTimeout(function() {
-                document.getElementById('preloader').style.display = 'none';
-                document.getElementById('content').style.opacity = '1';
-                document.body.classList.add('show-content');
-            }, 500);
-        }, 500);
-    </script>
 </head>
-<body class="bg-dark text-light">
-    <div class="container">
-        <div id="preloader">
-            <div class="spinner"></div>
-        </div>
-        <div id="content">
-            <header>
-                <ol>
-                    <li style="flex-grow: 1;"><h1>My ToDo</h1></li>
-                    <li><i class="fi fi-ss-moon disgard" id="dark"></i></li>
-                    <li><i class="fi fi-sr-brightness" id="light"></i></li>
-                    <li><sub id="dl">&ensp;Light mode</sub></li>
-                </ol>
-            </header>
-            <div class="mt-5">
-                <input type="text" name="task" id="task" class="form-control mt-5" placeholder="Type your task">
-                <input type="submit" value="Add Task" id="sub" class="btn btn-primary mt-4 m-2">
-                <div class="tl">
-                    <ul id="tasks" type="none"></ul>
-                </div>
-            </div>
-        </div>
+<body class="container mt-5 bg-dark text-light">
+    <div id="quiz">
+        <h1 style="text-align: center;">JavaScript Quiz</h1>
+        <h2 style="text-align: right;"><input type="text" diabled></h2>
     </div>
-    <div class="footer">
-        <hr>
-        <sup><h1>Made By</h1></sup>
-        <sub>Hamza Loutmani</sub>
-        <span>
-            <i class="fi fi-brands-instagram"></i>
-            <i class="fi fi-brands-facebook"></i>
-            <i class="fi fi-brands-whatsapp"></i>
-            <i class="fi fi-brands-github"></i>
-            <i class="fi fi-brands-linkedin"></i>
-        </span>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.9.0/firebase.js"></script>
-    <script type="module" src="main.js"></script>
-    <script src="test.js"></script> 
+    <div class="btns"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+            var result =0;
+            var par = document.querySelector('#quiz')
+            var btns = document.querySelector('.btns')
+            var h2 = document.createElement('h2')
+            
+            ////////////// HTML //////////////
+            function html(){
+                h2.innerHTML = 'What does HTML stands for?';
+                par.append(h2);
+                var htmlanswers = ['Hyper Text Makup Language','Home Tool Multi Language'];
+                htmlanswers.forEach(el=>{
+                    var btn = document.createElement('button');
+                    btn.setAttribute('class','btn btn-danger');
+                    btn.classList.add('m-3');
+                    btn.innerHTML = el;
+                    btn.addEventListener('click',()=>{if(btn.innerHTML==htmlanswers[0]){result+=1;}})
+                    btns.append(btn);
+                })
+            }
+            
+            ///////////////// CSS //////////////
+                function css() {
+                    h2.innerHTML = 'What does CSS stands for?';
+                    var cssanswers = ['Creative Style Sheet','Cascading Style Sheet'];
+                    btns.innerHTML = "";
+                    cssanswers.forEach(el=>{   
+                        var btn = document.createElement('button');
+                        btn.setAttribute('class','btn btn-primary');
+                        btn.classList.add('m-3');
+                        btn.innerHTML = el;
+                        btn.addEventListener('click',()=>{if(btn.innerHTML==cssanswers[1]){result+=1;}})
+                        btns.append(btn)
+                    })
+                }
+            
+                ///////////////// FIN ////////////
+            function fin(){
+                btns.innerHTML ='';
+                par.innerHTML = '<h1>You Result is </h1>';
+                var p = document.createElement('p');
+                p.innerHTML = result;
+                par.append(p);
+            }
+            
+            var seconds =0;
+            var minutes =0;
+            
+            function time(){
+                document.querySelector('input').value =`${minutes} : ${seconds}`;
+                function timer(){
+                    seconds ++;
+                    if(seconds==60){
+                        minutes++;
+                    }
+                }
+                setTimeout(timer(),1000);
+            }
+            
+            setTimeout(() => {html();},1000 );
+            setTimeout(() => {css();},4000 );
+            setTimeout(() => {fin()}, 8000);
+            setTimeout(time(),100)
+        })
+    </script>
 </body>
 </html>
